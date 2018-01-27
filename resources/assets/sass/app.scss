@@ -1,0 +1,145 @@
+
+// Fonts
+// @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+// Bootstrap
+// @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+// Variables
+@import "variables";
+
+@import './node_modules/bulma/bulma.sass';
+
+
+html *,input[type=button] {
+	font-family: Vazir;
+}
+
+.notification > button.delete {
+	border: none;
+}
+.is-hidden {
+	display: none;
+}
+.rtl {
+	direction: rtl;
+}
+
+#results {
+	position: absolute;
+	/*top: 100px;*/
+	z-index: 1000;
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	position: relative;
+	margin: 0;
+	padding-bottom: 6rem;
+	min-height: 100%;
+}
+
+#app {
+	padding-bottom: 0px;
+}
+
+.circle-image {
+	border-radius: 50%;
+}
+
+.profile-image {
+	@extend .circle-image;
+}
+
+.navbar {
+
+	.image {
+		margin-right: 10px;
+	}
+
+	.navbar-dropdown .navbar-item {
+		text-align: right;
+		direction: rtl;
+		padding-right: 10px;
+	}
+}
+
+
+.dialog-box {
+	position: relative;
+}
+
+.dialog-info .level-left {
+	position: absolute;
+	bottom: 0;
+	left: 20px;
+}
+
+.dialog-info .level-right {
+	position: absolute;
+	bottom: 15px;
+	right: 120px;
+}
+/*html,body,#app {*/
+	/*height: 100%;*/
+/*}*/
+/*#app {*/
+	/*min-height: 100%;*/
+/*}*/
+#search_container {
+	position: relative;
+}
+
+#results {
+	position: absolute;
+}
+
+.dialog-box {
+	.user-info {
+		// position: relative;
+		.profile-image {
+			width: 35px;
+			height: 35px;
+			position: absolute;
+			bottom: -4px;
+			left: -40px;	
+		}
+	}
+}
+
+// PAGINATION
+.pagination-level {
+	margin-top: 20px;
+	.pagination {
+		margin-top: 20px;
+		li {
+			margin: 0 8px 0 8px;
+		}
+	}
+}
+//// FOOTER ////
+.profile {
+
+	.profile-image {
+		
+	}
+
+}
+
+//// SINGLE ////
+.single {
+	margin-bottom: 10px;
+	h2,p {
+		color: white;
+		mix-blend-mode: difference;
+	}
+}
+
+.footer {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	padding: 1rem;
+}
