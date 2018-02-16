@@ -7,12 +7,9 @@
 
 		<title>{{ config('app.name') }}</title>
         
-		<!-- Styles -->
-    	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css" rel="stylesheet" type="text/css">
-		<link href="https://cdn.rawgit.com/rastikerdar/vazir-font/v16.1.0/dist/font-face.css" rel="stylesheet" type="text/css" />
-		<link href="{{ asset('css/app.css') }}" rel="stylesheet">
-		{{--  <link rel="stylesheet" href="{{ url('/css/app.css') }}">  --}}
+		<link href="{{ mix('css/app.css') }}" rel="stylesheet">
+
+		<meta name="csrf-token" content="{{ csrf_token() }}">
     </head>
     <body>
         <nav class="navbar is-dark">
@@ -57,37 +54,31 @@
 			</div>
         </nav>
 
-		@auth
-			<section class="section" id="app">
-				<div class="container">
-					<div class="columns">
+		<div id="app">
+			@auth
+				<section class="section">
+					<div class="container">
+						<div class="columns">
 
-						<div class="column is-three-quarters has-text-right" style="margin-top: 0; padding-top: 0;">
-							@yield('content')
+							<div class="column is-three-quarters has-text-right" style="margin-top: 0; padding-top: 0;">
+								@yield('content')
+							</div>
+
+							<div class="column">
+								@include('layouts.sidebar')
+							</div>
+
 						</div>
-
-						<div class="column">
-							@include('sidebar')
-						</div>
-
 					</div>
-				</div>
-			</section>
-			
-			@include('footer')
-		@else 
-			@yield('content')
-		@endauth
+				</section>
 
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
-		<script src="https://unpkg.com/tippy.js@2.0.7/dist/tippy.all.min.js"></script>
-		<script src="{{url('js/script.js')}}"></script>
+				@include('layouts.footer')
+			@else
+				@yield('content')
+			@endauth
+		</div>
 
-		{{-- Vuejs --}}
-		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
-		<script src="/js/app.js"></script>
+		<script src="{{ mix('js/app.js') }}"></script>
 
     </body>
 </html>

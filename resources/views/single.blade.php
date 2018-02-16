@@ -1,8 +1,8 @@
-@extends('master')
+@extends('layouts.master')
 
 @section('content')
 
-	@include('message')
+	@include('layouts.message')
 
 		<section class="hero is-primary single" style="background: {{$color}};">
 			<div class="hero-body">
@@ -39,6 +39,6 @@
 
 	@include('dialogs')
 
-	{{ $dialogs->links('paginator') }}
+	{{ $dialogs->links('layouts.paginator') }}
 
 @stop

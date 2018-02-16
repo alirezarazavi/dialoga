@@ -1,16 +1,17 @@
 
 // Fonts
-// @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+ @import url("https://cdn.rawgit.com/rastikerdar/vazir-font/v16.1.0/dist/font-face.css");
 // Bootstrap
 // @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 // Variables
 @import "variables";
 
-@import './node_modules/bulma/bulma.sass';
+@import '~bulma/bulma.sass';
+@import '~font-awesome/scss/font-awesome.scss';
 
 
 html *,input[type=button] {
-	font-family: Vazir;
+	font-family: Vazir, Tahoma, serif;
 }
 
 .notification > button.delete {

@@ -1,8 +1,8 @@
-@extends('master')
+@extends('layouts.master')
 
 @section('content')
 	
-	@include('message')
+	@include('layouts.message')
 
 	<div class="columns notification profile">
 
@@ -22,6 +22,6 @@
 
 	@include('dialogs')
 
-	{{ $dialogs->links('paginator') }}
+	{{ $dialogs->links('layouts.paginator') }}
 
 @stop

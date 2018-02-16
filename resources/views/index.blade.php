@@ -1,11 +1,11 @@
-@extends('master')
+@extends('layouts.master')
 
 @section('content')
 
 	<div class="hero is-primary is-bold is-small">
 		<div class="hero-body">
 			{{--  <h2 class="title is-4">دیالوگ جدید بنویسید و آن را ثبت کنید</h2>  --}}
-			@include('message')
+			@include('layouts.message')
 
 			<form method="POST" action="#">
 				{{csrf_field()}}
@@ -68,12 +68,13 @@
 	
 	@include('dialogs')
 			
-	{{ $dialogs->links('paginator') }}
-		
-	<script type="text/javascript">
+	{{ $dialogs->links('layouts.paginator') }}
+
+	{{--@TODO fix this!--}}
+	{{--<script type="text/javascript">--}}
 		{{-- JS FILE WILL READ THIS VAR FOR AJAX CALL --}}
-		var base_path = '{{ url('/') }}';
-	</script>
+		{{--var base_path = '{{ url('/') }}';--}}
+	{{--</script>--}}
 
 
 @stop

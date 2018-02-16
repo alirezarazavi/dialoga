@@ -1,8 +1,8 @@
-@extends('master')
+@extends('layouts.master')
 
 @section('content')
 	
-	@include('message')
+	@include('layouts.message')
 
 	<div class="columns notification settings">
 		<div class="column has-text-left">
@@ -72,7 +72,7 @@
 						<input type="password" id="new_password_confirm" name="new_password_confirm" class="input level-item" required autocomplete="off">
 					</div>
 					<div class="level-right">
-						<label for="new_password_confirm" class="level-item">تکرار رمز جدید</p>
+						<label for="new_password_confirm" class="level-item">تکرار رمز جدید</label>
 					</div>
 				</div>
 				<div class="level">
