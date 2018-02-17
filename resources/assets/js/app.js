@@ -23,6 +23,7 @@ window.Vue = require('vue');
 
 Vue.component('login-component', require('./components/Login.vue'));
 Vue.component('register-component', require('./components/Register.vue'));
+Vue.component('new-dialog', require('./components/NewDialog.vue'));
 
 const app = new Vue({
     el: '#app',

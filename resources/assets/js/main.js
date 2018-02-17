@@ -3,21 +3,21 @@
 
 jQuery(document).ready(function(jQuery) {
 	// Hide Notification panel when delete btn is clicked
-	jQuery(document).on('click', '.delete', function () {
-		jQuery(this).parent().addClass('is-hidden');
-		return false;
-	});
+	// jQuery(document).on('click', '.delete', function () {
+	// 	jQuery(this).parent().addClass('is-hidden');
+	// 	return false;
+	// });
 	jQuery(function () {
 		// Show and Hide password in register page
-		jQuery("#toggle-password").click(function () {
-			if (jQuery('#password').prop("type") == "text") {
-				jQuery('#password').prop("type", "password");
-				jQuery('#toggle-password i').toggleClass("fa-eye fa-eye-slash")
-			} else {
-				jQuery('#password').prop("type", "text");
-				jQuery('#toggle-password i').toggleClass("fa-eye fa-eye-slash")
-			}
-		});
+		// jQuery("#toggle-password").click(function () {
+		// 	if (jQuery('#password').prop("type") == "text") {
+		// 		jQuery('#password').prop("type", "password");
+		// 		jQuery('#toggle-password i').toggleClass("fa-eye fa-eye-slash")
+		// 	} else {
+		// 		jQuery('#password').prop("type", "text");
+		// 		jQuery('#toggle-password i').toggleClass("fa-eye fa-eye-slash")
+		// 	}
+		// });
 
 		// tooltip when copy text to clipboard
 		tippy('.copy', {
