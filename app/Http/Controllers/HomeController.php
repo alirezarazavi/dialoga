@@ -42,28 +42,38 @@ class HomeController extends Controller
 
 	//@TODO store operation goes to repository
     public function store(Request $request) {
+
+		$request->validate([
+			'resultDialog'	=>	'required|min:5',
+			'resultTitle'	=>	'required',
+			'resultPoster'	=>	'required',
+			'resultType'	=>	'required',
+			'resultYear'	=>	'required',
+			'resultImdbid'	=>	'required',
+		]);
+
         // Store dialog
     	$dialog = new Dialog;
-        $dialog->text       = $request->dialog_text;
-        $dialog->user_id    = Auth::user()->id;
-        $dialog->imdb_id    = $request->movie_imdb_id;
-        
+        $dialog->text       = $request->get('resultDialog');
+        $dialog->user_id    = auth()->user()->id;
+        $dialog->imdb_id    = $request->get('resultImdbid');
+
         if ($dialog->save()) {
             // store movie, if not exist
-            $movie_exist = Movie::where('imdb_id', '=', $request->movie_imdb_id)->first();
+            $movie_exist = Movie::where('imdb_id', '=', $request->get('resultImdbid'))->first();
             if (!$movie_exist) {
                 $movie = new Movie;
-                $movie->imdb_id = $request->movie_imdb_id;
-                $movie->title   = $request->movie_title;
-                $movie->year    = $request->movie_year;
-                $movie->type    = $request->movie_type;
-                $movie->poster  = $request->movie_poster;
+                $movie->imdb_id = $request->get('resultImdbid');
+                $movie->title   = $request->get('resultTitle');
+                $movie->year    = $request->get('resultYear');
+                $movie->type    = $request->get('resultType');
+                $movie->poster  = $request->get('resultPoster');
                 $movie->save();
             }
 
-            return redirect()->route('home')->with('message-success', 'دیالوگ ذخیره شد');
+            return 'true';
         } else {
-            return redirect()->route('home')->with('message-error', 'مشکلی پیش آمد');
+            return 'false';
         }
 
 	}

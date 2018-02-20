@@ -150,6 +150,8 @@ return [
         'new_password'              =>  'رمزعبور جدید',
         'new_password_confirm'      =>  'تکرار رمزعبور جدید',
         'user-image'                =>  'تصویر پروفایل',
+        'dialog-text'                =>  'متن دیالوگ',
+        'dialog-movie'                =>  'نام فیلم',
     ],
 
 ];
