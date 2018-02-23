@@ -61,7 +61,9 @@
 			</div>
 
 			<div class="column" style="margin-top: 20px;">
-				<p class="has-text-centered">قبلا ثبت نام کرده‌اید؟ <a href="/login" class="is-info">وارد شوید</a></p>
+				<p class="has-text-centered">قبلا ثبت نام کرده‌اید؟
+					<router-link to="/login">وارد شوید</router-link>
+				</p>
 			</div>
 
 		</form>

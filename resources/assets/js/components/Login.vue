@@ -42,7 +42,9 @@
 			</div>
 
 			<div class="column" style="margin-top: 20px;">
-				<p class="has-text-centered">حساب کاربری ندارید؟ <a href="/register">ثبت نام کنید</a></p>
+                <p class="has-text-centered">حساب کاربری ندارید؟
+					<router-link to="/register">ثبت نام کنید</router-link>
+				</p>
 			</div>
 
 		</form>

@@ -7,7 +7,7 @@
 
 			@include('layouts.message')
 
-			<new-dialog></new-dialog>
+			<new-dialog-component></new-dialog-component>
 			
 		</div>
 	</div>
@@ -21,8 +21,11 @@
 		</ul>
 	</div>
 	
-	@include('dialogs')
-			
+	{{--@include('dialogs')--}}
+	<dialog-component
+		v-bind:dialogs="{{ json_encode($dialogs) }}">
+	</dialog-component>
+
 	{{ $dialogs->links('layouts.paginator') }}
 
 	{{--<script type="text/javascript">--}}

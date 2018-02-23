@@ -4,16 +4,16 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
-// require('./main.js');
 
-require('./bootstrap');
+//require('./bootstrap');
+import './bootstrap';
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import router from './routes';
 
-// require('../../../node_modules/clipboard/dist/clipboard.min.js');
-//
-// require('../../../node_modules/tippy.js/dist/tippy.all.js');
-
-
-window.Vue = require('vue');
+//window.Vue = require('vue');
+window.Vue = Vue;
+Vue.use(VueRouter);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -23,10 +23,13 @@ window.Vue = require('vue');
 
 Vue.component('login-component', require('./components/Login.vue'));
 Vue.component('register-component', require('./components/Register.vue'));
-Vue.component('new-dialog', require('./components/NewDialog.vue'));
+Vue.component('new-dialog-component', require('./components/NewDialog.vue'));
+Vue.component('dialog-component', require('./components/Dialog.vue'));
 
 const app = new Vue({
     el: '#app',
+
+    router,
 
     data: {
 
