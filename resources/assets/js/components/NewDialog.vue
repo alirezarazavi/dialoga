@@ -132,12 +132,11 @@
 					this.form.post('/')
 						.then((response) => {
 							if (response.data === true) {
-								// this.results = '';
-								// window.location.href = '/';
 								this.results = '';
 								this.searchInput = '';
 								this.form.reset();
 								this.successful = true;
+							 	window.location.href = '/';
 							} else {
 								this.form.errors.set({
 									resultDialog: ['دیالوگ ذخیره نشد. دوباره تلاش کنید.']
