@@ -17,7 +17,6 @@ class MovieController extends Controller {
 		$this->dialogRepository = $dialogRepository;
 	}
 
-
 	public function show($imdbId) {
 		$movie = $this->omdb->fetch('i', $imdbId);
 		$img = Image::make($movie['data']['Poster']);
@@ -30,12 +29,10 @@ class MovieController extends Controller {
 		]);
 	}
 
-
 	public function search(Request $request) {
 		if ($request->ajax()) {
 			return Response($this->omdb->search($request->movie));
 		}
 	}
-
 
 }

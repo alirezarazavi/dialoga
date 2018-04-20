@@ -6,7 +6,7 @@ use App\Repositories\MovieRepositoryInterface;
 use App\Repositories\UserRepositoryInterface;
 use Illuminate\View\View;
 
-class SidebarComposer
+class PointsComposer
 {
     protected $movieRepository;
     protected $userRepository;
@@ -31,14 +31,9 @@ class SidebarComposer
      */
     public function compose(View $view)
     {
-        if (auth()->check()) {
-            $view->with([
-                'userPoints'    =>  $this->userRepository->getUserDialogPoints(auth()->user()->id),
-            ]);
-        }
         $view->with([
-			'popularMovies' =>  $this->movieRepository->getPopularMovies(),
-			'activeUsers' 	=>  $this->userRepository->getActiveUsers(),
+			'popularMovies' => $this->movieRepository->getPopularMovies(),
+			'activeUsers' 	=> $this->userRepository->getActiveUsers()
 		]);
     }
 }

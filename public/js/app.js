@@ -60787,6 +60787,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -60810,8 +60814,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         getMovieUrl: function getMovieUrl(imdbId) {
             return '/title/' + imdbId;
         },
-        onHeartClick: function onHeartClick() {
-            return alert('hearth click');
+        onHeartClick: function onHeartClick(dialogId) {
+            this.$refs['like_icon_' + dialogId][0].setAttribute('class', 'fa fa-heart animated bounceIn');
+            this.$refs['like_icon_' + dialogId][0].innerText = '2';
+            console.log(this.$refs['like_icon_' + dialogId][0]);
         }
     }
 });
@@ -62275,11 +62281,24 @@ var render = function() {
                     staticClass: "level-item",
                     on: {
                       click: function($event) {
-                        _vm.onHeartClick()
+                        _vm.onHeartClick(dialog.id)
                       }
                     }
                   },
-                  [_vm._m(1, true)]
+                  [
+                    _c(
+                      "span",
+                      { staticClass: "icon is-large has-text-primary" },
+                      [
+                        _c("i", {
+                          ref: "like_icon_" + dialog.id,
+                          refInFor: true,
+                          staticClass: "fa fa-heart-o animated fadeIn",
+                          domProps: { textContent: _vm._s(-1) }
+                        })
+                      ]
+                    )
+                  ]
                 )
               ]),
               _vm._v(" "),
@@ -62362,14 +62381,6 @@ var staticRenderFns = [
         ])
       ]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "icon is-large has-text-primary" }, [
-      _c("i", { staticClass: "fa fa-heart-o" }, [_vm._v("+2")])
-    ])
   }
 ]
 render._withStripped = true

@@ -25,9 +25,11 @@
 	<dialog-component
 		v-bind:dialogs="{{ json_encode($dialogs) }}"
 		avatar-base-url="{{ url('/') . '/uploads/avatars/' }}"
+		v-bind:user-points="{{ $userPoints }}"
 		>
 	</dialog-component>
 
+	<br>
 	{{ $dialogs->links('layouts.paginator') }}
 
 	{{--<script type="text/javascript">--}}

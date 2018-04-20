@@ -15,6 +15,7 @@ class DialogRepository implements DialogRepositoryInterface {
         return DB::table('dialogs')
 					->join('movies', 'dialogs.imdb_id', '=', 'movies.imdb_id')
 					->join('users', 'dialogs.user_id', '=', 'users.id')
+//					->join('points', 'users.id', '=', 'points.user_id')
 					->orderBy('dialogs.id', 'desc')
 					->select('dialogs.*', 'movies.imdb_id', 'movies.title', 'movies.year', 'movies.type', 'movies.poster', 'users.username', 'users.avatar')
 					->paginate(config('constants.PAGE_NUMBER'));

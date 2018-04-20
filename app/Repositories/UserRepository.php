@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Repositories;
+use App\Models\Point;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
 class UserRepository implements UserRepositoryInterface {
@@ -21,6 +23,9 @@ class UserRepository implements UserRepositoryInterface {
 			->paginate(config('constants.PAGE_NUMBER'));
 	}
 
+	public function getUserDialogPoints($userId) {
+        return Point::where('user_id', $userId)->get();
+    }
 
 	/**
 	 * Return active users by number of dialogs they submit

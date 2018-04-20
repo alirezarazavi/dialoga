@@ -22,4 +22,8 @@ class Dialog extends Model {
 		return $this->hasOne('App\Models\User');
 	}
 
+//	public function point() {
+//	    return $this->hasMany('App\Models\Point');
+//    }
+
 }

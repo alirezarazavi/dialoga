@@ -8,6 +8,7 @@
 
 @import '~bulma/bulma.sass';
 @import '~font-awesome/scss/font-awesome.scss';
+@import "~animate.css";
 
 
 html *,input[type=button] {
@@ -75,6 +76,9 @@ body {
 	position: absolute;
 	bottom: 0;
 	left: 20px;
+	.like-icon i::before {
+		margin-right: 5px;
+	}
 }
 
 .dialog-info .level-right {

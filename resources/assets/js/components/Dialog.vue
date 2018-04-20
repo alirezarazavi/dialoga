@@ -14,8 +14,12 @@
                         <a class="level-item copy" alt="Copy to clipboard" title="متن کپی شد" data-clipboard-action="copy" data-clipboard-target="" data-tippy-title="کپی">
                             <span class="icon is-small has-text-info"><i class="fa fa-clipboard"></i></span>
                         </a>
-                        <a class="level-item" v-on:click="onHeartClick()">
-                            <span class="icon is-large has-text-primary"><i class="fa fa-heart-o">+2</i></span>
+                        <a class="level-item" v-on:click="onHeartClick(dialog.id)">
+                            <span class="icon is-large has-text-primary like-icon">
+                                <!--<i v-bind:class="'fa fa-heart-o'">-1</i>-->
+                                <i class="fa fa-heart-o animated bounceIn" v-bind:ref="'like_icon_'+dialog.id">{{ dialog.point_count }}</i>
+                                <!--<i class="fa fa-heart">+3</i>-->
+                            </span>
                         </a>
                     </div>
                     <div class="level-right">
@@ -54,12 +58,20 @@
             required: true,
           },
           avatarBaseUrl: String,
+          userPoints: {
+            type: Array,
+          },
         },
         data() {
           return {
           }
         },
         mounted() {
+          for (let point of this.userPoints) {
+            // Change point icon to full heart (green) on site startup if user pointed it
+//            console.log(point);
+            this.$refs['like_icon_'+point.dialog_id][0].setAttribute('class', 'fa fa-heart animated bounceIn');
+          }
         },
         computed: {
 
@@ -71,8 +83,23 @@
             getMovieUrl(imdbId) {
                 return '/title/'+imdbId;
             },
-            onHeartClick() {
-                return alert('hearth click');
+            onHeartClick(dialogId) {
+                // Change icon and increase number of point
+                if (this.$refs['like_icon_'+dialogId][0].getAttribute('class') === 'fa fa-heart-o animated bounceIn') {
+                    this.$refs['like_icon_'+dialogId][0].setAttribute('class', 'fa fa-heart animated bounceIn');
+                    let point = this.$refs['like_icon_'+dialogId][0].innerText;
+                    point++;
+                    this.$refs['like_icon_'+dialogId][0].innerText = point;
+                } else {
+                    //Decrease point
+                    this.$refs['like_icon_'+dialogId][0].setAttribute('class', 'fa fa-heart-o animated bounceIn');
+                    let point = this.$refs['like_icon_'+dialogId][0].innerText;
+                    point--;
+                    this.$refs['like_icon_'+dialogId][0].innerText = point;
+                }
+                axios.post('/point/'+dialogId)
+                .then((response) => {
+                });
             }
         }
     }

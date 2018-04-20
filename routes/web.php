@@ -1,11 +1,13 @@
 <?php
 
 // Home page
-Route::get('/', 'HomeController@index')->name('home');
-Route::post('/', 'HomeController@store');
+Route::get('/', 'DialogController@index')->name('home');
+Route::post('/', 'DialogController@store');
 // Movie, Search (omdb api) and Single
 Route::get('/movie_search', 'MovieController@search')->name('movie_search');
 Route::get('/title/{imdbId}/', 'MovieController@show')->name('single');
+// Movie Points
+Route::post('/point/{dialogId}', 'DialogController@point');
 // User Login and Registration
 Auth::routes();
 Route::get('logout', 'Auth\LoginController@logout');
@@ -13,12 +15,4 @@ Route::get('logout', 'Auth\LoginController@logout');
 Route::get('settings', 'UserController@settings')->name('settings');
 Route::post('settings', 'UserController@update')->name('settings_update');
 Route::get('{username}', 'UserController@profile')->name('profile');
-
-// Vuejs
-Route::get('/vue/skills', function() {
-	return ['php', 'mysql', 'laravel', 'vuejs'];
-});
-Route::get('/vue/view', function() {
-	return view('vue');
-});
 
