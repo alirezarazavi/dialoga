@@ -12,12 +12,14 @@ class MovieController extends Controller {
 	protected $omdb;
 	protected $dialogRepository;
 
-	public function __construct(DialogRepositoryInterface $dialogRepository) {
+	public function __construct(DialogRepositoryInterface $dialogRepository) 
+	{
 		$this->omdb = new OMDbAPI('4b227fb4', false, true);
 		$this->dialogRepository = $dialogRepository;
 	}
 
-	public function show($imdbId) {
+	public function show($imdbId) 
+	{
 		$movie = $this->omdb->fetch('i', $imdbId);
 		$img = Image::make($movie['data']['Poster']);
 		$imgColor = $img->pickColor(100, 100, 'hex');
@@ -29,7 +31,8 @@ class MovieController extends Controller {
 		]);
 	}
 
-	public function search(Request $request) {
+	public function search(Request $request) 
+	{
 		if ($request->ajax()) {
 			return Response($this->omdb->search($request->movie));
 		}

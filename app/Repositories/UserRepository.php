@@ -28,7 +28,7 @@ class UserRepository implements UserRepositoryInterface {
     }
 
 	/**
-	 * Return active users by number of dialogs they submit
+	 * Return active users by calculate number of dialogs they submit
 	 *
 	 * @return \Illuminate\Support\Collection
 	 */
@@ -40,6 +40,24 @@ class UserRepository implements UserRepositoryInterface {
 					->take(config('constants.ACTIVE_USER_NUMBER'))
 					->get();
 	}
+
+    /**
+     * Return list of dialogs that the user likes
+     *
+     * @param $username
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
+     */
+    public function getUserDialogsLikes($username) {
+        $user = User::where('username', $username)->first();
+        return DB::table('dialogs')
+                    ->join('points', 'dialogs.id', '=', 'points.dialog_id')
+                    ->join('movies', 'dialogs.imdb_id', '=', 'movies.imdb_id')
+                    ->join('users', 'dialogs.user_id', '=', 'users.id')
+                    ->orderBy('dialogs.id', 'desc')
+                    ->select('points.*', 'dialogs.*', 'users.*', 'movies.*')
+                    ->where('points.user_id', '=', $user->id)
+                    ->paginate(config('constants.PAGE_NUMBER'));
+    }
 
 
 }

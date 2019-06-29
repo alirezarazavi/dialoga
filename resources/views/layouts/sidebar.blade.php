@@ -3,7 +3,7 @@
 	<ul class="menu-list">
 		<li><a href="{{route('home')}}" class="@if(Route::is('home')) is-active @endif">صفحه نخست</a></li>
 		<li><a href="{{route('profile', Auth::user()->username)}}" class="@if(Route::is('profile') AND Auth::user()->username == Request::route('username')) is-active @endif">پروفایل</a></li>
-		<li><a href="">لایک‌ها</a></li>
+		<li><a href="{{route('user.likes', Auth::user()->username)}}" class="@if(Route::is('user.likes')) is-active @endif">لایک‌ها</a></li>
 		<li><a href="{{route('settings')}}" class="@if(Route::is('settings')) is-active @endif">تنظیمات</a></li>
 	</ul>
 	<p class="menu-label">فیلم‌های برتر</p>

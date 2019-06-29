@@ -23,25 +23,40 @@ class UserController extends Controller
 		$this->userRepository = $userRepository;
     }
 
-
-    public function profile($username) {
-//    	$user = User::with(array('dialogs' => function ($query) {
-//    		$query->select('id', 'user_id', 'text');
-//		}))->get();
-//    	dd($user);
+    /**
+     * Show user profile page
+     * 
+     * @param $username
+     * @return \Illuminate\View\View
+     */
+    public function profile($username) 
+    {
         return view('profile')->with([
             'dialogs'   =>  $this->userRepository->getUserDialogs($username),
         ]);
     }
 
-
-    public function settings() {
+    /**
+     * Show settings page
+     * 
+     * @param
+     * @return \Illuminate\View\View
+     */
+    public function settings() 
+    {
         return view('settings');
     }
 
-
-    public function update(Request $request) {
+    /**
+     * Update user profile at settings page
+     * 
+     * @param \Illuminate\Http\Request $request
+     * @return
+     */
+    public function update(Request $request) 
+    {
         $user = User::find(auth()->user()->id);
+
         if ($request->has('update-password')):
             
             $request->validate([
@@ -86,10 +101,18 @@ class UserController extends Controller
             }
 
         endif;
-
     }
 
-
-
-
+    /**
+     * Show user likes page
+     * 
+     * @param $username
+     * @return \Illuminate\View\View
+     */
+    public function likes($username) 
+    {
+        return view('likes')->with([
+            'dialogs'   =>  $this->userRepository->getUserDialogsLikes($username),
+        ]);
+    }
 }

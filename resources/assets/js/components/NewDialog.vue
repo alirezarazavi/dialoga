@@ -4,7 +4,7 @@
 		<div v-if="successful">
 			<div class="notification is-info">
 				<button class="delete" v-on:click="successful = false"></button>
-				<p dir="rtl">دیالوگ ذخیره شد.</p>
+				<p dir="rtl">دیالوگ ذخیره شد</p>
 			</div>
 		</div>
 		<!--Errors-->
@@ -40,13 +40,13 @@
 						<span id="search_done_icon" class="icon is-right is-invisible"><i
 								class="fa fa-check"></i></span>
 
-						<!-- {{--  MOVIE SEARCH RESULT  --}} -->
+						<!-- Movie Search Result -->
 						<div v-if="results.length" class="notification is-light is-8 has-text-left" id="results">
 							<a class="delete" v-on:click="results = '', searchInput = ''"></a>
 							<div v-for="result in results" class="media">
 								<div class="media-left">
 									<figure class="image is-32x32">
-										<!--vue obligate to use v-bind:src, or vue parser through error-->
+										<!--vue obligate to use v-bind:src, or vue parser throw error-->
 										<img v-bind:src="result.Poster" alt="Image">
 									</figure>
 								</div>
@@ -139,13 +139,13 @@
 							 	window.location.href = '/';
 							} else {
 								this.form.errors.set({
-									resultDialog: ['دیالوگ ذخیره نشد. دوباره تلاش کنید.']
+									resultDialog: ['دیالوگ ذخیره نشد. دوباره تلاش کنید']
 								});
 							}
 						})
 						.catch((error) => {
 							this.form.errors.set({
-								resultDialog: ['مشکلی پیش آمد.']
+								resultDialog: ['مشکلی پیش آمد']
 							});
 						});
 				}

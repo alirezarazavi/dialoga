@@ -1,5 +1,12 @@
 <template>
 <div>
+    <!--<div class="tabs is-right">-->
+        <!--<ul>-->
+            <!--<router-link v-bind:to=" '/sort/' + 'popular' " tag="li" active-class="is-active" exact><a>محبوب‌ترین‌ها</a></router-link>-->
+            <!--<router-link to="/" tag="li" active-class="is-active" exact><a>آخرین دیالوگ‌ها</a></router-link>-->
+        <!--</ul>-->
+    <!--</div>-->
+    <!--Dialog List-->
     <div v-for="dialog in dialogs.data" class="box dialog-box">
         <article class="media has-text-right">
             <div class="media-left">
@@ -61,6 +68,9 @@
           userPoints: {
             type: Array,
           },
+          sortType: {
+            required: false,
+          }
         },
         data() {
           return {
@@ -69,12 +79,10 @@
         mounted() {
           for (let point of this.userPoints) {
             // Change point icon to full heart (green) on site startup if user pointed it
-//            console.log(point);
             this.$refs['like_icon_'+point.dialog_id][0].setAttribute('class', 'fa fa-heart animated bounceIn');
           }
         },
         computed: {
-
         },
         methods: {
         	toJalali(originalDate) {

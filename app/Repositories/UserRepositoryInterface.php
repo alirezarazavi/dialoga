@@ -12,4 +12,6 @@ interface UserRepositoryInterface {
 
 	public function getUserDialogPoints($userId);
 
+	public function getUserDialogsLikes($username);
+
 }

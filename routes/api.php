@@ -1,20 +1,5 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
-
-//Route::middleware('auth:api')->get('/user', function (Request $request) {
-//    return $request->user();
-//});
-
 // Route will be /api/v1/...
 Route::prefix('v1')->group(function() {
 
@@ -24,5 +9,9 @@ Route::prefix('v1')->group(function() {
 		'movies'	=>	'api\ApiMovieController'
 	]);
 
+	Route::post('register', 'api\ApiAuthController@register');
+	Route::post('login', 'api\ApiAuthController@login');
+    Route::post('logout', 'api\ApiAuthController@logout');
+    Route::post('user', 'api\ApiAuthController@user');
 });
 

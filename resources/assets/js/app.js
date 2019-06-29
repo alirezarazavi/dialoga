@@ -24,14 +24,12 @@ Vue.use(VueRouter);
 Vue.component('login-component', require('./components/Login.vue'));
 Vue.component('register-component', require('./components/Register.vue'));
 Vue.component('new-dialog-component', require('./components/NewDialog.vue'));
-Vue.component('dialog-component', require('./components/Dialog.vue'));
+Vue.component('dialog-component', require('./components/DialogsList.vue'));
 
 const app = new Vue({
     el: '#app',
-
     router,
 
     data: {
-
     }
 });
