@@ -14,6 +14,7 @@
             <div class="media-content has-text-right">
                 <div class="content rtl" style="white-space:pre-line;">
                     <p id="">{{ dialog.text }}</p>
+                    <p>{{ dialog.id }}</p>
                 </div>
 
                 <nav class="level is-mobile dialog-info">
@@ -78,8 +79,13 @@
         },
         mounted() {
           for (let point of this.userPoints) {
+            //   console.log(point);
+            //   console.log(this.$refs['like_icon_'+point.dialog_id]);
             // Change point icon to full heart (green) on site startup if user pointed it
-            this.$refs['like_icon_'+point.dialog_id][0].setAttribute('class', 'fa fa-heart animated bounceIn');
+            if (this.$refs['like_icon_'+point.dialog_id][0] != null) {
+                console.log(point.dialog_id + " defined");
+            }
+            // this.$refs['like_icon_'+point.dialog_id][0].setAttribute('class', 'fa fa-heart animated bounceIn');
           }
         },
         computed: {
@@ -99,7 +105,7 @@
                     point++;
                     this.$refs['like_icon_'+dialogId][0].innerText = point;
                 } else {
-                    //Decrease point
+                    // Decrease point
                     this.$refs['like_icon_'+dialogId][0].setAttribute('class', 'fa fa-heart-o animated bounceIn');
                     let point = this.$refs['like_icon_'+dialogId][0].innerText;
                     point--;
@@ -108,7 +114,7 @@
                 axios.post('/point/'+dialogId)
                 .then((response) => {
                 });
-            }
+            },
         }
     }
 </script>

@@ -177,7 +177,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-        Hekmatinasser\Verta\VertaServiceProvider::class,
+        Hekmatinasser\Verta\Laravel\VertaServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
 
         /* 
@@ -185,7 +185,7 @@ return [
         */
         App\Providers\ComposerServiceProvider::class,
 
-		/*
+        /*
 		 * Repositories Provider
 		 */
         App\Providers\BackendServiceProvider::class,
@@ -238,10 +238,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
         'Verta' => Hekmatinasser\Verta\Verta::class,
         'Image' => Intervention\Image\Facades\Image::class
-
     ],
 
 ];

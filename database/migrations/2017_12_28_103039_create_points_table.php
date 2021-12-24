@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDialogsTable extends Migration
+class CreatePointsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateDialogsTable extends Migration
      */
     public function up()
     {
-        Schema::create('dialogs', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('imdb_id');
-            $table->integer('user_id');
-            $table->string('text');
-            $table->timestamps();
+        Schema::create('points', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('dialog_id')->constrained();
+            $table->foreignId('user_id')->constrained();
         });
     }
 
@@ -29,6 +27,6 @@ class CreateDialogsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dialogs');
+        Schema::dropIfExists('points');
     }
 }

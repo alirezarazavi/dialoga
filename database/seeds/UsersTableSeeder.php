@@ -1,7 +1,8 @@
 <?php
 
+use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Carbon;
 
 class UsersTableSeeder extends Seeder
 {
@@ -12,14 +13,12 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
-        	'username'			=>	'alireza',
-			'email'				=>	'hi@alirezarazavi.ir',
-			'avatar'			=>	'default.png',
-			'password'			=>	bcrypt('123456'),
-			'remember_token' 	=> 	str_random(100),
-			'created_at'		=>	Carbon::now()->format('Y-m-d H:i:s'),
-			'updated_at'		=>	Carbon::now()->format('Y-m-d H:i:s')
-		]);
+        User::create([
+            'username' => 'alireza',
+            'email' => 'hi@alirezarazavi.ir',
+            'avatar' => 'default.png',
+            'password' => bcrypt('password'),
+            'remember_token' => Str::random(100),
+        ]);
     }
 }

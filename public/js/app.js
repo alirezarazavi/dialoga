@@ -62405,78 +62405,84 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: {
-    dialogs: {
-      type: Object,
-      required: true
-    },
-    avatarBaseUrl: String,
-    userPoints: {
-      type: Array
-    },
-    sortType: {
-      required: false
-    }
-  },
-  data: function data() {
-    return {};
-  },
-  mounted: function mounted() {
-    var _iteratorNormalCompletion = true;
-    var _didIteratorError = false;
-    var _iteratorError = undefined;
-
-    try {
-      for (var _iterator = this.userPoints[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-        var point = _step.value;
-
-        // Change point icon to full heart (green) on site startup if user pointed it
-        this.$refs['like_icon_' + point.dialog_id][0].setAttribute('class', 'fa fa-heart animated bounceIn');
-      }
-    } catch (err) {
-      _didIteratorError = true;
-      _iteratorError = err;
-    } finally {
-      try {
-        if (!_iteratorNormalCompletion && _iterator.return) {
-          _iterator.return();
+    props: {
+        dialogs: {
+            type: Object,
+            required: true
+        },
+        avatarBaseUrl: String,
+        userPoints: {
+            type: Array
+        },
+        sortType: {
+            required: false
         }
-      } finally {
-        if (_didIteratorError) {
-          throw _iteratorError;
-        }
-      }
-    }
-  },
+    },
+    data: function data() {
+        return {};
+    },
+    mounted: function mounted() {
+        var _iteratorNormalCompletion = true;
+        var _didIteratorError = false;
+        var _iteratorError = undefined;
 
-  computed: {},
-  methods: {
-    toJalali: function toJalali(originalDate) {
-      return __WEBPACK_IMPORTED_MODULE_0_moment_jalaali___default()(originalDate).format('jYYYY/jM/jD');
+        try {
+            for (var _iterator = this.userPoints[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                var point = _step.value;
+
+                //   console.log(point);
+                //   console.log(this.$refs['like_icon_'+point.dialog_id]);
+                // Change point icon to full heart (green) on site startup if user pointed it
+                if (this.$refs['like_icon_' + point.dialog_id][0] != null) {
+                    console.log(point.dialog_id + " defined");
+                }
+                // this.$refs['like_icon_'+point.dialog_id][0].setAttribute('class', 'fa fa-heart animated bounceIn');
+            }
+        } catch (err) {
+            _didIteratorError = true;
+            _iteratorError = err;
+        } finally {
+            try {
+                if (!_iteratorNormalCompletion && _iterator.return) {
+                    _iterator.return();
+                }
+            } finally {
+                if (_didIteratorError) {
+                    throw _iteratorError;
+                }
+            }
+        }
     },
-    getMovieUrl: function getMovieUrl(imdbId) {
-      return '/title/' + imdbId;
-    },
-    onHeartClick: function onHeartClick(dialogId) {
-      // Change icon and increase number of point
-      if (this.$refs['like_icon_' + dialogId][0].getAttribute('class') === 'fa fa-heart-o animated bounceIn') {
-        this.$refs['like_icon_' + dialogId][0].setAttribute('class', 'fa fa-heart animated bounceIn');
-        var point = this.$refs['like_icon_' + dialogId][0].innerText;
-        point++;
-        this.$refs['like_icon_' + dialogId][0].innerText = point;
-      } else {
-        //Decrease point
-        this.$refs['like_icon_' + dialogId][0].setAttribute('class', 'fa fa-heart-o animated bounceIn');
-        var _point = this.$refs['like_icon_' + dialogId][0].innerText;
-        _point--;
-        this.$refs['like_icon_' + dialogId][0].innerText = _point;
-      }
-      axios.post('/point/' + dialogId).then(function (response) {});
+
+    computed: {},
+    methods: {
+        toJalali: function toJalali(originalDate) {
+            return __WEBPACK_IMPORTED_MODULE_0_moment_jalaali___default()(originalDate).format('jYYYY/jM/jD');
+        },
+        getMovieUrl: function getMovieUrl(imdbId) {
+            return '/title/' + imdbId;
+        },
+        onHeartClick: function onHeartClick(dialogId) {
+            // Change icon and increase number of point
+            if (this.$refs['like_icon_' + dialogId][0].getAttribute('class') === 'fa fa-heart-o animated bounceIn') {
+                this.$refs['like_icon_' + dialogId][0].setAttribute('class', 'fa fa-heart animated bounceIn');
+                var point = this.$refs['like_icon_' + dialogId][0].innerText;
+                point++;
+                this.$refs['like_icon_' + dialogId][0].innerText = point;
+            } else {
+                // Decrease point
+                this.$refs['like_icon_' + dialogId][0].setAttribute('class', 'fa fa-heart-o animated bounceIn');
+                var _point = this.$refs['like_icon_' + dialogId][0].innerText;
+                _point--;
+                this.$refs['like_icon_' + dialogId][0].innerText = _point;
+            }
+            axios.post('/point/' + dialogId).then(function (response) {});
+        }
     }
-  }
 });
 
 /***/ }),
@@ -63941,7 +63947,11 @@ var render = function() {
                 staticClass: "content rtl",
                 staticStyle: { "white-space": "pre-line" }
               },
-              [_c("p", { attrs: { id: "" } }, [_vm._v(_vm._s(dialog.text))])]
+              [
+                _c("p", { attrs: { id: "" } }, [_vm._v(_vm._s(dialog.text))]),
+                _vm._v(" "),
+                _c("p", [_vm._v(_vm._s(dialog.id))])
+              ]
             ),
             _vm._v(" "),
             _c("nav", { staticClass: "level is-mobile dialog-info" }, [
@@ -64267,12 +64277,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 						window.location.href = '/';
 					} else {
 						_this2.form.errors.set({
-							resultDialog: ['دیالوگ ذخیره نشد. دوباره تلاش کنید.']
+							resultDialog: ['دیالوگ ذخیره نشد. دوباره تلاش کنید']
 						});
 					}
 				}).catch(function (error) {
 					_this2.form.errors.set({
-						resultDialog: ['مشکلی پیش آمد.']
+						resultDialog: ['مشکلی پیش آمد']
 					});
 				});
 			}
@@ -64301,7 +64311,7 @@ var render = function() {
               }
             }),
             _vm._v(" "),
-            _c("p", { attrs: { dir: "rtl" } }, [_vm._v("دیالوگ ذخیره شد.")])
+            _c("p", { attrs: { dir: "rtl" } }, [_vm._v("دیالوگ ذخیره شد")])
           ])
         ])
       : _vm._e(),
